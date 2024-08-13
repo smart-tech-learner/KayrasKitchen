@@ -3,7 +3,6 @@ import mongodb from "mongodb";
 import OrderModel from "../Models/OrdersModel.js";
 
 export const createOrder = async (request, response) => {
-  console.log(request.body);
   try {
     const order = await OrderModel.create(request.body);
 

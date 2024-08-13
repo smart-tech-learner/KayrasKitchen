@@ -11,7 +11,6 @@ const Dishes = (props) => {
       }/api/v1/allFoods`;
 
       try {
-        console.log("selected Menu::: ", props.selectedMenuOption);
         const foods = await axios.get(fetchAllFoodsUrl, {
           withCredentials: true,
         });

@@ -15,7 +15,6 @@ const Cart = () => {
   const { dispatch } = useContext(CartContext);
 
   useEffect(() => {
-    console.log(user);
     if (user?.id === "") {
       navigate("/");
     }

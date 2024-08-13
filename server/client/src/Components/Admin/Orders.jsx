@@ -53,16 +53,12 @@ const Orders = () => {
       import.meta.env.VITE_BACKEND_URL
     }/api/v1/orders/update/${order_id}`;
 
-    console.log(event.target.value);
-    console.log(statusUpdateUrl);
-
     const params = { status: event.target.value };
     try {
       const response = await axios.post(statusUpdateUrl, params, {
         withCredentials: true,
       });
 
-      console.log(response);
       if (response?.data?.status === "success") {
         toast.success("Order status updated successfully");
       }

@@ -12,6 +12,10 @@ import errorHandlerMiddleware from "./Middlewares/ErrorHandlerMiddleware.js";
 import cookieParser from "cookie-parser";
 import { authenticateUser } from "./Middlewares/AuthMiddleware.js";
 
+import { dirname } from "path";
+import { fileURLToPath } from "url";
+import path from "path";
+
 const app = express();
 app.use(json());
 app.use(
@@ -21,6 +25,8 @@ app.use(
   })
 );
 
+const __dirname = dirname(fileURLToPath(import.meta.url));
+
 app.use(cookieParser());
 app.use("/api/v1/auth", AuthRouter);
 app.use("/api/v1/user", authenticateUser, UserRouter);
@@ -28,7 +34,13 @@ app.use("/api/v1/orders", authenticateUser, OrderRouter);
 app.use("/api/v1", FoodRouter);
 
 app.get("/", (req, res) => {
-  return res.status(200).json({ mg: "success" });
+  return res.status(200).json({ msg: "success" });
+});
+
+app.use(express.static(path.join(__dirname, "/client/dist")));
+
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "/client/dist/index.html"));
 });
 
 app.use(errorHandlerMiddleware);
