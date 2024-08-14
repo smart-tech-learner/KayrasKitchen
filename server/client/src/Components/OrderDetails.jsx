@@ -62,15 +62,15 @@ const OrderDetails = () => {
   return (
     <div>
       {fetchStatus === "success" ? (
-        <div className="bg-white p-3 rounded-md mt-10 mx-5 mb-10">
+        <div className="bg-white p-3 rounded-md mt-10 mb-10 w-full">
           <div className="flex justify-between">
-            <div className="px-3 py-3">
+            <div className="px-1 py-1">
               <p className="font-bold">Order #{orderDetails?._id}</p>
               <p className="font-light">
                 {orderDetails?.status} | {createdDateString()}
               </p>
             </div>
-            <div className="px-3 py-3">
+            <div className="px-1 py-1">
               <Link
                 type="button"
                 to="/orders"
@@ -110,13 +110,13 @@ const OrderDetails = () => {
                 );
               })}
             </div>
-            <div className="w-full max-w-md mx-auto pt-10">
+            <div className="max-w-md mx-auto pt-10 w-80">
               <div>
                 <div>
                   <p className="font-bold">Delivery Address</p>
                   <div className="pt-2">
                     <p className="font-semibold">{orderDetails?.name}</p>
-                    <p>{orderDetails?.address}</p>
+                    <p className="text-wrap">{orderDetails?.address}</p>
                   </div>
                 </div>
                 <div className="pt-10">
