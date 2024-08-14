@@ -5,7 +5,8 @@ import Home from "../Pages/Home";
 import Cart from "../Pages/Cart";
 import Checkout from "../Components/Checkout";
 import OrderDetails from "../Components/OrderDetails";
-import Orders from "../Components/Admin/Orders";
+import AdminOrders from "../Components/Admin/Orders";
+import Orders from "../Components/Orders";
 import Error from "../Pages/Error";
 import { AddItem } from "../Components/Admin/AddItem";
 import ListItems from "../Components/Admin/ListItems";
@@ -50,7 +51,7 @@ const router = createBrowserRouter([
       },
       {
         path: "admin/orders",
-        element: <Orders />,
+        element: <AdminOrders />,
       },
     ],
   },
