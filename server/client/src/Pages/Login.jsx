@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import cross_icon from "../assets/cross_icon.png";
 import { useDispatch, useSelector } from "react-redux";

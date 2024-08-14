@@ -57,7 +57,6 @@ const Orders = () => {
 
   return (
     <div>
-      <button>Home</button>
       <div className="pt-10 pb-10">
         {allOrders?.map((order) => {
           return (
