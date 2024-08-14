@@ -96,7 +96,7 @@ const Orders = () => {
                 key={order._id}
               >
                 <div className="p-5 mt-2 w-full rounded-md">
-                  <p className="font-bold overflow-hidden whitespace-nowrap text-ellipsis w-36">
+                  <p className="font-bold overflow-hidden whitespace-nowrap text-ellipsis w-24">
                     #{order._id}
                   </p>
                   <p className="font-extralight">
