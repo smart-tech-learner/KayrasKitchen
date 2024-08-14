@@ -28,30 +28,37 @@ const Header = (props) => {
     setShowProfileOptions(!showProfileOptions);
   };
 
-  const OnClickHeader = () => {
-    navigate("/");
+  const onClickHeader = () => {
+    if (!location.pathname.includes("admin")) {
+      navigate("/");
+    } else {
+      navigate("/admin");
+    }
   };
 
   return (
     <div className="flex justify-between px-12 pb-3 ">
-      <div className="flex" onClick={() => OnClickHeader()}>
+      <div className="flex" onClick={() => onClickHeader()}>
         <img className="h-14" src={brand_logo} alt="logo" />
-        <div className="grid">
-          <p className="text-primary font-primary text-2xl font-bold px-2">
-            𝕂𝕒𝕪𝕣𝕒'𝕤
-          </p>
-          <p className="px-2">𝑲𝒊𝒕𝒄𝒉𝒆𝒏</p>
-        </div>
+        {!location.pathname.includes("admin") ? (
+          <div className="grid">
+            <p className="text-primary font-primary text-2xl font-bold px-2">
+              𝕂𝕒𝕪𝕣𝕒'𝕤
+            </p>
+            <p className="px-2">𝑲𝒊𝒕𝒄𝒉𝒆𝒏</p>
+          </div>
+        ) : (
+          <div className="grid">
+            <p className="text-primary font-primary text-2xl font-bold px-2">
+              Kayra's Kitchen
+            </p>
+            <p className="px-2 font-bold">Admin Portal</p>
+          </div>
+        )}
       </div>
 
-      {location.pathname === "/admin" && (
-        <div>
-          <p className="font-bold text-primary text-2xl">Admin Portal</p>
-        </div>
-      )}
-
       <div className="flex">
-        {user?.id !== "" && (
+        {!location.pathname.includes("admin") && user?.id !== "" && (
           <div className="pr-3 py-1">
             <img src={bag} alt="bag" width="30" onClick={onClickCart} />
           </div>
@@ -77,7 +84,7 @@ const Header = (props) => {
         </div>
       </div>
 
-      {showProfileOptions && (
+      {!location.pathname.includes("admin") && showProfileOptions && (
         <ProfileOptions closeProfileOptions={closeProfileOptions} />
       )}
     </div>

@@ -2,10 +2,14 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import day from "dayjs";
+import home_icon from "../../assets/home_icon.png";
 import advancedFormat from "dayjs/plugin/advancedFormat";
+import { useNavigate } from "react-router-dom";
 day.extend(advancedFormat);
 
 const Orders = () => {
+  const navigate = useNavigate();
+
   const [allOrders, setAllOrders] = useState([]);
   const [orderStatus, setOrderStatus] = useState();
 
@@ -64,9 +68,26 @@ const Orders = () => {
     }
   };
 
+  const navigateToAdminHome = () => {
+    navigate("/admin");
+  };
+
   return (
     <div>
-      <div className="pt-5 pb-10 h-screen overflow-y-scroll p-2 bg-slate-200">
+      <div className="flex justify-between">
+        <h1 className="text-2xl py-5 px-1 pb-10 font-primary text-primary font-bold">
+          Orders
+        </h1>
+        <div className=" py-5 px-5 pb-10 font-primary text-primary font-bold">
+          <img
+            className="h-8"
+            src={home_icon}
+            alt="home"
+            onClick={navigateToAdminHome}
+          />
+        </div>
+      </div>
+      <div className="pb-10 h-screen p-2 bg-slate-200">
         <div className="">
           {allOrders?.map((order) => {
             return (
@@ -75,7 +96,9 @@ const Orders = () => {
                 key={order._id}
               >
                 <div className="p-5 mt-2 w-full rounded-md">
-                  <p className="font-bold">#{order._id}</p>
+                  <p className="font-bold overflow-hidden whitespace-nowrap text-ellipsis w-36">
+                    #{order._id}
+                  </p>
                   <p className="font-extralight">
                     {createdDateString(order.createdAt)} | &#8377;{" "}
                     {calculateTotal(order.items)}

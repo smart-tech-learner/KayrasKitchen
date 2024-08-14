@@ -64,7 +64,7 @@ function App() {
         </div>
 
         <ToastContainer position="top-right" />
-        {location.pathname !== "/admin" && (
+        {!location.pathname.includes("admin") && (
           <div>
             <Footer />
           </div>

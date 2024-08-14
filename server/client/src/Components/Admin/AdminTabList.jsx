@@ -7,6 +7,7 @@ const AdminTabList = (props) => {
 
   return (
     <div
+      key={props.tab.id}
       className="p-5 flex justify-center items-center bg-slate-500 mb-1 rounded-md hover:bg-primary text-white font-bold"
       onClick={() => onClickListItem(props.tab.id)}
     >

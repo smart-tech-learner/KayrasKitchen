@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import AdminTabs from "./AdminTabs";
 import { Outlet, useNavigate } from "react-router-dom";
-import AdminContent from "./AdminContent";
 import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 import { logoutUser, setUser } from "../../Redux/UserSlice";
@@ -30,6 +29,20 @@ const AdminHome = () => {
 
   const [tabDetailsToLoad, setTabDetailsToLoad] = useState("");
   const selectedTab = async (tabId) => {
+    if (tabId === "addItem") {
+      navigate("/admin/addItem");
+      return;
+    }
+    if (tabId === "listItems") {
+      navigate("/admin/listItems");
+      return;
+    }
+
+    if (tabId === "orders") {
+      navigate("/admin/orders");
+      return;
+    }
+
     if (tabId === "back") {
       navigate("/");
       return;
@@ -56,22 +69,18 @@ const AdminHome = () => {
     setTabDetailsToLoad(tabId);
   };
 
-  const resetTabs = () => {
-    setTabDetailsToLoad("");
-  };
-
   {
     return user.role === "admin" ? (
-      <div className="lg:grid lg:grid-cols-[250px_1fr] h-screen max-h-screen mt-1">
-        <Outlet />
-        <div className="bg-white p-3 py-5 rounded-md">
-          <AdminTabs selectedTab={selectedTab} />
+      <div>
+        <p className="pt-5 font-primary text-gray-700 font-extrabold text-2xl">
+          Welcome, {user.name}
+        </p>
+        <div className="w-full max-w-2xl mx-auto pt-10 p-5">
+          <Outlet />
+          <div className="bg-white p-3 py-5 rounded-md">
+            <AdminTabs selectedTab={selectedTab} />
+          </div>
         </div>
-        <AdminContent
-          tabDetailsToLoad={tabDetailsToLoad}
-          resetTabs={resetTabs}
-          loadListItemsTab={() => selectedTab("listItems")}
-        />
       </div>
     ) : (
       <div className="w-screen max-w-lg mx-auto pt-20 pb-20 ">

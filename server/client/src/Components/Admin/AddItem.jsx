@@ -3,8 +3,11 @@ import { CATEGORIES } from "../../Utils/Constants";
 import axios from "axios";
 import UploadImage from "../UploadImage";
 import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
+import home_icon from "../../assets/home_icon.png";
 
 export const AddItem = (props) => {
+  const navigate = useNavigate();
   const [openUploadImageScreen, setOpenUploadImageScreen] = useState(false);
   const [foodItem, setFoodItem] = useState({
     name: "",
@@ -45,15 +48,27 @@ export const AddItem = (props) => {
     setOpenUploadImageScreen(false);
   };
 
+  const navigateToAdminHome = () => {
+    navigate("/admin");
+  };
+
   return (
-    <div className="lg:w-6/12">
-      <h1 className="text-2xl py-5 px-5 pb-10 font-primary text-primary font-bold">
-        Add Item
-      </h1>
-      <form
-        className="p-10 bg-slate-100 mx-5 rounded-md"
-        onSubmit={addFoodItem}
-      >
+    <div className="lg:w-6/12 w-screen max-w-4xl mx-auto">
+      <div className="flex justify-between">
+        <h1 className="text-2xl py-5 px-5 pb-10 font-primary text-primary font-bold">
+          Add Item
+        </h1>
+        <div className=" py-5 px-5 pb-10 font-primary text-primary font-bold">
+          <img
+            className="h-8"
+            src={home_icon}
+            alt="home"
+            onClick={navigateToAdminHome}
+          />
+        </div>
+      </div>
+
+      <form className="p-5 bg-slate-100 mx-5 rounded-md" onSubmit={addFoodItem}>
         <div className="grid text-xl pb-2">
           <label htmlFor="name">Product Name</label>
           <input
@@ -98,7 +113,11 @@ export const AddItem = (props) => {
               onChange={onEnterFoodItemDetails}
             >
               {Object.values(CATEGORIES).map((category) => {
-                return <option value={category}>{category}</option>;
+                return (
+                  <option value={category} key={category}>
+                    {category}
+                  </option>
+                );
               })}
             </select>
           </div>
@@ -134,7 +153,7 @@ export const AddItem = (props) => {
           </button>
           <button
             type="button"
-            onClick={() => props.resetTabs()}
+            onClick={navigateToAdminHome}
             className="px-2 py-2 bg-slate-400 rounded-md mr-2 text-white font-bold"
           >
             Cancel
