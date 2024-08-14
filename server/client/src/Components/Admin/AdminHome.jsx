@@ -14,9 +14,7 @@ const AdminHome = () => {
 
   useEffect(() => {
     async function fetchCurrentUser() {
-      const currentUserUrl = `${
-        import.meta.env.VITE_BACKEND_URL
-      }/api/v1/user/currentUser`;
+      const currentUserUrl = "/api/v1/user/currentUser";
 
       try {
         const result = await axios.get(currentUserUrl, {
@@ -38,9 +36,7 @@ const AdminHome = () => {
     }
 
     if (tabId === "logout") {
-      const logoutUrl = `${
-        import.meta.env.VITE_BACKEND_URL
-      }/api/v1/auth/logout`;
+      const logoutUrl = "/api/v1/auth/logout";
 
       try {
         await axios.get(logoutUrl, {

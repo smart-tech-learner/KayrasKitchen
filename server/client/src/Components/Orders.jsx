@@ -20,9 +20,7 @@ const Orders = () => {
     }
 
     async function fetchAllOrders() {
-      const fetchAllOrdersUrl = `${
-        import.meta.env.VITE_BACKEND_URL
-      }/api/v1/orders`;
+      const fetchAllOrdersUrl = "/api/v1/orders";
 
       try {
         const response = await axios.get(fetchAllOrdersUrl, {

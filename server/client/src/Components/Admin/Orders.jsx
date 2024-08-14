@@ -11,9 +11,7 @@ const Orders = () => {
 
   useEffect(() => {
     async function fetchAllOrders() {
-      const fetchAllOrdersUrl = `${
-        import.meta.env.VITE_BACKEND_URL
-      }/api/v1/orders`;
+      const fetchAllOrdersUrl = "/api/v1/orders";
 
       try {
         const response = await axios.get(fetchAllOrdersUrl, {
@@ -49,9 +47,7 @@ const Orders = () => {
 
   const updateStatus = async (order_id) => {
     setOrderStatus(event.target.value);
-    const statusUpdateUrl = `${
-      import.meta.env.VITE_BACKEND_URL
-    }/api/v1/orders/update/${order_id}`;
+    const statusUpdateUrl = `/api/v1/orders/update/${order_id}`;
 
     const params = { status: event.target.value };
     try {

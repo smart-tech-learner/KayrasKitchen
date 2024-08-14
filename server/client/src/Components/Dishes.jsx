@@ -6,9 +6,7 @@ const Dishes = (props) => {
   const [allFoods, setAllFoods] = useState([]);
   useEffect(() => {
     async function fetchAllFooods() {
-      const fetchAllFoodsUrl = `${
-        import.meta.env.VITE_BACKEND_URL
-      }/api/v1/allFoods`;
+      const fetchAllFoodsUrl = "/api/v1/allFoods";
 
       try {
         const foods = await axios.get(fetchAllFoodsUrl, {

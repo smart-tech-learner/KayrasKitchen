@@ -12,7 +12,7 @@ const ProfileOptions = (props) => {
   const dispatch = useDispatch();
 
   const onClickLogoutUser = async () => {
-    const logoutUrl = `${import.meta.env.VITE_BACKEND_URL}/api/v1/auth/logout`;
+    const logoutUrl = "/api/v1/auth/logout";
 
     try {
       await axios.get(logoutUrl, {

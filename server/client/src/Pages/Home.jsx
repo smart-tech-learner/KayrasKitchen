@@ -22,9 +22,7 @@ const Home = () => {
 
   useEffect(() => {
     async function fetchCurrentUser() {
-      const currentUserUrl = `${
-        import.meta.env.VITE_BACKEND_URL
-      }/api/v1/user/currentUser`;
+      const currentUserUrl = "/api/v1/user/currentUser";
 
       try {
         const result = await axios.get(currentUserUrl, {

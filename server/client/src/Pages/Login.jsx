@@ -22,7 +22,7 @@ const Login = (props) => {
   const submitLoginForm = async (event) => {
     event.preventDefault();
 
-    const loginUrl = `${import.meta.env.VITE_BACKEND_URL}/api/v1/auth/login`;
+    const loginUrl = "/api/v1/auth/login";
 
     try {
       const response = await axios.post(loginUrl, loginDetails, {
@@ -34,9 +34,7 @@ const Login = (props) => {
 
         localStorage.setItem("token", response?.data?.token);
 
-        const currentUserUrl = `${
-          import.meta.env.VITE_BACKEND_URL
-        }/api/v1/user/currentUser`;
+        const currentUserUrl = "/api/v1/user/currentUser";
 
         const result = await axios.get(currentUserUrl, {
           withCredentials: true,

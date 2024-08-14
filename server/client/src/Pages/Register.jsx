@@ -39,9 +39,7 @@ const Register = (props) => {
           setUserDetails({ ...userDetails, image: imageUrl.url });
         }
 
-        const registerUrl = `${
-          import.meta.env.VITE_BACKEND_URL
-        }/api/v1/auth/register`;
+        const registerUrl = "/api/v1/auth/register";
 
         const userRegsitration = await axios.post(registerUrl, userDetails);
         if (userRegsitration?.data?.status === "success") {

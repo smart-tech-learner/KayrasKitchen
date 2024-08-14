@@ -44,9 +44,7 @@ const DeliveryInfo = () => {
   const placeOrder = async (event) => {
     event.preventDefault();
     try {
-      const createOrderUrl = `${
-        import.meta.env.VITE_BACKEND_URL
-      }/api/v1/orders/createOrder`;
+      const createOrderUrl = "/api/v1/orders/createOrder";
 
       const newOrder = {
         orderedBy: user.id,

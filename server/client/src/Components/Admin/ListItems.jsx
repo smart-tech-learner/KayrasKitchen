@@ -5,7 +5,7 @@ const ListItems = () => {
   const [allFoods, setAllFoods] = useState();
   useEffect(() => {
     async function fetchListItems() {
-      const allFoodsUrl = `${import.meta.env.VITE_BACKEND_URL}/api/v1/allFoods`;
+      const allFoodsUrl = "/api/v1/allFoods";
       const response = await axios.get(allFoodsUrl, {
         withCredentials: true,
       });

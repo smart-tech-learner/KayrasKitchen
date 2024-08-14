@@ -18,12 +18,12 @@ import path from "path";
 
 const app = express();
 app.use(json());
-app.use(
-  cors({
-    origin: process.env.FRONTEND_URL,
-    credentials: true,
-  })
-);
+// app.use(
+//   cors({
+//     origin: process.env.FRONTEND_URL,
+//     credentials: true,
+//   })
+// );
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 

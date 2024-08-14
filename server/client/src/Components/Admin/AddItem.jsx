@@ -28,7 +28,7 @@ export const AddItem = (props) => {
     }
 
     try {
-      const addItemUrl = `${import.meta.env.VITE_BACKEND_URL}/api/v1/addFood`;
+      const addItemUrl = "/api/v1/addFood";
       await axios.post(addItemUrl, foodItem, {
         withCredentials: true,
       });

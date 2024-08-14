@@ -26,9 +26,7 @@ const OrderDetails = () => {
     const { id } = params;
 
     async function fetchOrder() {
-      const fetchOrderUrl = `${
-        import.meta.env.VITE_BACKEND_URL
-      }/api/v1/orders/${id}`;
+      const fetchOrderUrl = `/api/v1/orders/${id}`;
 
       try {
         const details = await axios.get(fetchOrderUrl, {
